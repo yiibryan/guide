@@ -145,8 +145,8 @@ HTML元素共有以下5种：
 
 ```html
 <div>
-    <h1>我是h1标题</h1>
-    <p>我是一段文字，我有始有终，浏览器能正确解析</p>
+  <h1>我是h1标题</h1>
+  <p>我是一段文字，我有始有终，浏览器能正确解析</p>
 </div>
 	
 <br>
@@ -156,8 +156,8 @@ HTML元素共有以下5种：
 
 ```html
 <div>
-    <h1>我是h1标题</h1>
-    <p>我是一段文字，我有始无终，浏览器亦能正确解析
+  <h1>我是h1标题</h1>
+  <p>我是一段文字，我有始无终，浏览器亦能正确解析
 </div>
 
 <br/>
@@ -196,8 +196,8 @@ HTML文本、CDATA、JavaScript、meta标签某些属性等内容可大小写混
 
 <!-- JavaScript 内容 -->
 <script type="text/javascript">
-	var demoName = 'demoName';
-	...
+  var demoName = 'demoName';
+  ...
 </script>
 	
 <!-- CDATA 内容 -->
@@ -274,11 +274,11 @@ HTML文本、CDATA、JavaScript、meta标签某些属性等内容可大小写混
 
 ### 代码缩进
 
-统一使用四个空格进行代码缩进，使得各编辑器表现一致（各编辑器有相关配置）
+统一使用两个空格进行代码缩进，使得各编辑器表现一致（各编辑器有相关配置）
 
 ```html
 <div class="jdc">
-    <a href="#"></a>
+  <a href="#"></a>
 </div> 
 ```
 
@@ -297,8 +297,8 @@ HTML文本、CDATA、JavaScript、meta标签某些属性等内容可大小写混
 
 ```html
 <div>
-    <h1></h1>
-    <p></p>
+  <h1></h1>
+  <p></p>
 </div>	
 <p><span></span><span></span></p>
 ```
@@ -307,11 +307,11 @@ HTML文本、CDATA、JavaScript、meta标签某些属性等内容可大小写混
 
 ```html
 <div>
-    <h1></h1><p></p>
+  <h1></h1><p></p>
 </div>	
 <p> 
-    <span></span>
-    <span></span>
+  <span></span>
+  <span></span>
 </p>
 ```
 段落元素与标题元素只能嵌套内联元素

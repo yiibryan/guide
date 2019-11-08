@@ -1,15 +1,59 @@
-# Markdown手册 
+# Markdown cheatsheet
 
-> 本手册参考自 [a Gist](https://gist.github.com/jonschlinkert/5854601)。  
+_(Also see [remarkable][], the markdown parser created by the author of this cheatsheet)_ 
 
+## Table of contents
 
-## Typography 
+- [Standard features](#standard-features)
+  * [Headings](#headings)
+  * [Paragraphs](#paragraphs)
+  * [Breaks](#breaks)
+  * [Horizontal Rule](#horizontal-rule)
+  * [Emphasis](#emphasis)
+    + [Bold](#bold)
+    + [Italics](#italics)
+  * [Blockquotes](#blockquotes)
+  * [Lists](#lists)
+    + [Unordered](#unordered)
+    + [Ordered](#ordered)
+    + [Time-saving Tip](#time-saving-tip)
+  * [Code](#code)
+    + [Inline code](#inline-code)
+    + ["Fenced" code block](#fenced-code-block)
+    + [Indented code](#indented-code)
+    + [Syntax highlighting](#syntax-highlighting)
+  * [Links](#links)
+    + [Autolinks](#autolinks)
+    + [Inline links](#inline-links)
+    + [Link titles](#link-titles)
+    + [Named Anchors](#named-anchors)
+  * [Images](#images)
+  * [Raw HTML](#raw-html)
+  * [Escaping with backslashes](#escaping-with-backslashes)
+- [Non-standard features](#non-standard-features)
+  * [Strikethrough](#strikethrough)
+  * [Todo List](#todo-list)
+  * [Tables](#tables)
+    + [Aligning cells](#aligning-cells)
+  * [Footnotes](#footnotes)
+    + [Inline footnotes](#inline-footnotes)
+  * [Additional Information](#additional-information)
+    + [What is markdown?](#what-is-markdown)
+    + [Other Resources](#other-resources)
+    + [Contributing](#contributing)
 
-### Headings
+<br>
+<br>
+
+# Standard features
+
+The following markdown features are defined by the [CommonMark][] standard, and are generally supported by all markdown parsers and editors.
+
+## Headings
 
 Headings from `h1` through `h6` are constructed with a `#` for each level:
 
-``` markdown
+```
 # h1 Heading
 ## h2 Heading
 ### h3 Heading
@@ -27,9 +71,9 @@ Renders to:
 ##### h5 Heading
 ###### h6 Heading
 
-HTML:
+And this HTML:
 
-``` html
+```html
 <h1>h1 Heading</h1>
 <h2>h2 Heading</h2>
 <h3>h3 Heading</h3>
@@ -38,20 +82,46 @@ HTML:
 <h6>h6 Heading</h6>
 ```
 
-<br>
+**A note about "Setext" Headings**
+
+Note that this document only describes [ATX headings](https://spec.commonmark.org/0.28/#atx-headings), as it is the preferred syntax for writing headings. However, the CommonMark specification also describes [Setext headings](https://spec.commonmark.org/0.28/#setext-headings), a heading format that is denoted by a line of dashes or equal signes following the heading. It's recommended by the author of this guide that you use only ATX headings, as they are easier to write and read in text editors. 
+
 <br>
 <br>
 
+## Paragraphs
 
-## Horizontal Rules
+Body copy written as normal plain-text will be wrapped with `<p></p>` tags in the rendered HTML.
 
-The HTML `<hr>` element is for creating a "thematic break" between paragraph-level elements. In markdown, you can create a `<hr>` with any of the following:
+So this:
+
+```
+Lorem ipsum dolor sit amet, graecis denique ei vel, at duo primis mandamus. Et legere ocurreret pri, animal tacimates complectitur ad cum. Cu eum inermis inimicus efficiendi. Labore officiis his ex, soluta officiis concludaturque ei qui, vide sensibus vim ad.
+```
+
+Renders to this HTML:
+
+```html
+<p>Lorem ipsum dolor sit amet, graecis denique ei vel, at duo primis mandamus. Et legere ocurreret pri, animal tacimates complectitur ad cum. Cu eum inermis inimicus efficiendi. Labore officiis his ex, soluta officiis concludaturque ei qui, vide sensibus vim ad.</p>
+```
+
+<br>
+<br>
+
+## Breaks
+
+You can use multiple consecutive newline characters (`\n`) to create extra spacing between sections in a markdown document. However, if you need to ensure that extra newlines are not collapsed, you can use as many HTML `<br>` elements as you want.
+
+
+## Horizontal Rule
+
+The HTML `<hr>` element is for creating a "thematic break" between paragraph-level elements. In markdown, you can use of the following for this purpose:
 
 * `___`: three consecutive underscores
 * `---`: three consecutive dashes
 * `***`: three consecutive asterisks
 
-renders to:
+Renders to:
 
 ___
 
@@ -59,41 +129,18 @@ ___
 
 ***
 
-
 <br>
 <br>
-<br>
-
-
-## Body Copy 
-
-Body copy written as normal, plain text will be wrapped with `<p></p>` tags in the rendered HTML.
-
-So this body copy:
-
-``` markdown
-Lorem ipsum dolor sit amet, graecis denique ei vel, at duo primis mandamus. Et legere ocurreret pri, animal tacimates complectitur ad cum. Cu eum inermis inimicus efficiendi. Labore officiis his ex, soluta officiis concludaturque ei qui, vide sensibus vim ad.
-```
-renders to this HTML:
-
-``` html
-<p>Lorem ipsum dolor sit amet, graecis denique ei vel, at duo primis mandamus. Et legere ocurreret pri, animal tacimates complectitur ad cum. Cu eum inermis inimicus efficiendi. Labore officiis his ex, soluta officiis concludaturque ei qui, vide sensibus vim ad.</p>
-```
-
-
-<br>
-<br>
-<br>
-
 
 ## Emphasis
 
 ### Bold
+
 For emphasizing a snippet of text with a heavier font-weight.
 
 The following snippet of text is **rendered as bold text**.
 
-``` markdown
+```
 **rendered as bold text**
 ```
 renders to:
@@ -102,16 +149,17 @@ renders to:
 
 and this HTML
 
-``` html
+```html
 <strong>rendered as bold text</strong>
 ```
 
 ### Italics
+
 For emphasizing a snippet of text with italics.
 
 The following snippet of text is _rendered as italicized text_.
 
-``` markdown
+```
 _rendered as italicized text_
 ```
 
@@ -121,43 +169,27 @@ _rendered as italicized text_
 
 and this HTML:
 
-``` html
+```html
 <em>rendered as italicized text</em>
 ```
 
-
-### strikethrough
-In GFM you can do strickthroughs. 
-
-``` markdown
-~~Strike through this text.~~
-```
-Which renders to:
-
-~~Strike through this text.~~
-
-
-<br>
-<br>
-<br>
-
-
 ## Blockquotes
-For quoting blocks of content from another source within your document.
 
-Add `>` before any text you want to quote. 
+Used for defining a section of quoting text from another source, within your document.
 
-``` markdown
-Add `>` before any text you want to quote. 
+To create a blockquote, use `>` before any text you want to quote.
+
+```
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante
 ```
 
 Renders to:
 
 > Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
 
-and this HTML:
+And the generated HTML from a markdown parser might look something like this:
 
-``` html
+```html
 <blockquote>
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
 </blockquote>
@@ -165,38 +197,36 @@ and this HTML:
 
 Blockquotes can also be nested:
 
-``` markdown
-> Donec massa lacus, ultricies a ullamcorper in, fermentum sed augue. 
-Nunc augue augue, aliquam non hendrerit ac, commodo vel nisi. 
->> Sed adipiscing elit vitae augue consectetur a gravida nunc vehicula. Donec auctor 
+```
+> Donec massa lacus, ultricies a ullamcorper in, fermentum sed augue.
+Nunc augue augue, aliquam non hendrerit ac, commodo vel nisi.
+>> Sed adipiscing elit vitae augue consectetur a gravida nunc vehicula. Donec auctor
 odio non est accumsan facilisis. Aliquam id turpis in dolor tincidunt mollis ac eu diam.
->>> Donec massa lacus, ultricies a ullamcorper in, fermentum sed augue. 
-Nunc augue augue, aliquam non hendrerit ac, commodo vel nisi. 
+>>> Donec massa lacus, ultricies a ullamcorper in, fermentum sed augue.
+Nunc augue augue, aliquam non hendrerit ac, commodo vel nisi.
 ```
 
 Renders to:
 
-> Donec massa lacus, ultricies a ullamcorper in, fermentum sed augue. 
-Nunc augue augue, aliquam non hendrerit ac, commodo vel nisi. 
->> Sed adipiscing elit vitae augue consectetur a gravida nunc vehicula. Donec auctor 
+> Donec massa lacus, ultricies a ullamcorper in, fermentum sed augue.
+Nunc augue augue, aliquam non hendrerit ac, commodo vel nisi.
+>> Sed adipiscing elit vitae augue consectetur a gravida nunc vehicula. Donec auctor
 odio non est accumsan facilisis. Aliquam id turpis in dolor tincidunt mollis ac eu diam.
->>> Donec massa lacus, ultricies a ullamcorper in, fermentum sed augue. 
-Nunc augue augue, aliquam non hendrerit ac, commodo vel nisi. 
-
+>>> Donec massa lacus, ultricies a ullamcorper in, fermentum sed augue.
+Nunc augue augue, aliquam non hendrerit ac, commodo vel nisi.
 
 <br>
 <br>
-<br>
-
 
 ## Lists
 
 ### Unordered
+
 A list of items in which the order of the items does not explicitly matter.
 
 You may use any of the following symbols to denote bullets for each list item:
 
-```markdown
+```
 * valid bullet
 - valid bullet
 + valid bullet
@@ -204,7 +234,7 @@ You may use any of the following symbols to denote bullets for each list item:
 
 For example
 
-``` markdown
+```
 + Lorem ipsum dolor sit amet
 + Consectetur adipiscing elit
 + Integer molestie lorem at massa
@@ -235,7 +265,7 @@ Renders to:
 
 And this HTML
 
-``` html
+```html
 <ul>
   <li>Lorem ipsum dolor sit amet</li>
   <li>Consectetur adipiscing elit</li>
@@ -259,7 +289,7 @@ And this HTML
 
 A list of items in which the order of items does explicitly matter.
 
-``` markdown
+```
 1. Lorem ipsum dolor sit amet
 2. Consectetur adipiscing elit
 3. Integer molestie lorem at massa
@@ -282,7 +312,7 @@ Renders to:
 
 And this HTML:
 
-``` html
+```html
 <ol>
   <li>Lorem ipsum dolor sit amet</li>
   <li>Consectetur adipiscing elit</li>
@@ -295,9 +325,13 @@ And this HTML:
 </ol>
 ```
 
-**TIP**: If you just use `1.` for each number, GitHub will automatically number each item. For example:
+### Time-saving Tip
 
-``` markdown
+Sometimes lists change, and when they do it's a pain to re-order all of the numbers. Markdown solves this problem by allowing you to simply use `1.` before each item in the list.
+
+For example:
+
+```
 1. Lorem ipsum dolor sit amet
 1. Consectetur adipiscing elit
 1. Integer molestie lorem at massa
@@ -308,7 +342,7 @@ And this HTML:
 1. Eget porttitor lorem
 ```
 
-Renders to:
+Automatically re-numbers the items and renders to:
 
 1. Lorem ipsum dolor sit amet
 2. Consectetur adipiscing elit
@@ -319,29 +353,54 @@ Renders to:
 7. Aenean sit amet erat nunc
 8. Eget porttitor lorem
 
-
 <br>
 <br>
-<br>
-
 
 ## Code
 
 ### Inline code
-Wrap inline snippets of code with `` ` ``.
 
-For example, `<section></section>` should be wrapped as "inline".
+Wrap inline snippets of code with a single backtick: <code>`</code>.
 
-``` html
-For example, `<section></section>` should be wrapped as "inline".
+For example, to show `<div></div>` inline with other text, just wrap it in backticks.
+
+```html
+For example, to show `<div></div>` inline with other text, just wrap it in backticks.
 ```
 
+### "Fenced" code block
+
+Three consecutive backticks, referred to as "code fences", are used to denote multiple lines of code: <code>```</code>.
+
+For example, this:
+
+<pre>
+```html
+Example text here...
+```
+</pre>
+
+Appears like this when viewed in a browser:
+
+```
+Example text here...
+```
+
+And renders to something like this in HTML:
+
+```html
+<pre>
+  <p>Example text here...</p>
+</pre>
+```
 
 ### Indented code
 
-Or indent several lines of code by at least four spaces, as in:
+You may also indent several lines of code by at least four spaces, but this is not recommended as it is harder to read, harder to maintain, and doesn't support syntax highlighting.
 
-``` js
+Example:
+
+```
     // Some comments
     line 1 of code
     line 2 of code
@@ -353,36 +412,13 @@ Or indent several lines of code by at least four spaces, as in:
     line 2 of code
     line 3 of code
 
-
-### Block code "fences"
-
-Use "fences"  ```` ``` ```` to block in multiple lines of code. 
-
-<pre>
-``` html
-Sample text here...
-```
-</pre>
-
-
-```
-Sample text here...
-```
-
-HTML:
-
-``` html
-<pre>
-  <p>Sample text here...</p>
-</pre>
-```
 
 ### Syntax highlighting
 
-GFM, or "GitHub Flavored Markdown" also supports syntax highlighting. To activate it, simply add the file extension of the language you want to use directly after the first code "fence", ` ``` js `, and syntax highlighting will automatically be applied in the rendered HTML. For example, to apply syntax highlighting to JavaScript code:
+Various markdown parsers, such as [remarkable](https://github.com/jonschlinkert/remarkable), support syntax highlighting with fenced code blocks. To activate the correct styling for the language inside the code block, simply add the file extension of the language you want to use directly after the first code "fence": <code>```js</code>, and syntax highlighting will automatically be applied in the rendered HTML (if supported by the parser). For example, to apply syntax highlighting to JavaScript code:
 
 <pre>
-``` javascript
+```js
 grunt.initConfig({
   assemble: {
     options: {
@@ -400,13 +436,13 @@ grunt.initConfig({
       }
     }
   }
-};
+});
 ```
 </pre>
 
-Renders to:
+Which renders to:
 
-``` javascript
+```js
 grunt.initConfig({
   assemble: {
     options: {
@@ -424,12 +460,12 @@ grunt.initConfig({
       }
     }
   }
-};
-```
+});
+``
 
-And this complicated HTML:
+And this complicated HTML is an example of what might be generated by the markdown parser, when syntax highlighting is applied by a library like [highlight.js](https://highlightjs.org/):
 
-``` xml
+```xml
 <div class="highlight"><pre><span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
   <span class="nx">assemble</span><span class="o">:</span> <span class="p">{</span>
     <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
@@ -447,22 +483,218 @@ And this complicated HTML:
       <span class="p">}</span>
     <span class="p">}</span>
   <span class="p">}</span>
-<span class="p">};</span>
+<span class="p">});</span>
 </pre></div>
 ```
 
-
-<br>
 <br>
 <br>
 
 
+## Links
+
+### Autolinks
+
+Autolinks are absolute URIs and email addresses inside `<` and `>`. They are parsed as links, where the URI or email address itself is used as the link's label.
+
+```
+<http://foo.bar.baz>
+```
+
+Renders to:
+
+<http://foo.bar.baz>
+
+URIs or email addresses that are not wrapped in angle brackets are not recognized as valid autolinks by markdown parsers.
+
+
+### Inline links
+
+```
+[Assemble](http://assemble.io)
+```
+
+Renders to (hover over the link, there is no tooltip):
+
+[Assemble](http://assemble.io)
+
+HTML:
+
+```html
+<a href="http://assemble.io">Assemble</a>
+```
+
+### Link titles
+
+```
+[Upstage](https://github.com/upstage/ "Visit Upstage!")
+```
+
+Renders to (hover over the link, there should be a tooltip):
+
+[Upstage](https://github.com/upstage/ "Visit Upstage!")
+
+HTML:
+
+```html
+<a href="https://github.com/upstage/" title="Visit Upstage!">Upstage</a>
+```
+
+### Named Anchors
+
+Named anchors enable you to jump to the specified anchor point on the same page. For example, each of these chapters:
+
+```
+# Table of Contents
+  * [Chapter 1](#chapter-1)
+  * [Chapter 2](#chapter-2)
+  * [Chapter 3](#chapter-3)
+```
+
+will jump to these sections:
+
+```
+## Chapter 1 <a name="chapter-1"></a>
+Content for chapter one.
+
+## Chapter 2 <a name="chapter-2"></a>
+Content for chapter one.
+
+## Chapter 3 <a name="chapter-3"></a>
+Content for chapter one.
+```
+
+**Anchor placement**
+
+Note that placement of achors is arbitrary, you can put them anywhere you want, not just in headings. This makes adding cross-references easy when writing markdown.
+
+<br>
+<br>
+
+
+## Images
+
+Images have a similar syntax to links but include a preceding exclamation point.
+
+```
+![Minion](http://octodex.github.com/images/minion.png)
+```
+
+![Minion](http://octodex.github.com/images/minion.png)
+
+or
+
+```
+![Alt text](http://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
+```
+![Alt text](http://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
+
+Like links, Images also have a footnote style syntax
+
+```
+![Alt text][id]
+```
+![Alt text][id]
+
+With a reference later in the document defining the URL location:
+
+[id]: http://octodex.github.com/images/dojocat.jpg  "The Dojocat"
+
+```
+[id]: http://octodex.github.com/images/dojocat.jpg  "The Dojocat"
+```
+
+## Raw HTML
+
+Any text between `<` and `>` that looks like an HTML tag will be parsed as a raw HTML tag and rendered to HTML without escaping. 
+
+_(Note that no attempt is made by the markdown parser to validate your HTML)._
+
+Example:
+
+```
+**Visit <a href="https://github.com">Jon Schlinkert's GitHub Profile</a>.**
+```
+
+Renders to:
+
+**Visit <a href="https://github.com">Jon Schlinkert's GitHub Profile</a>.**
+
+## Escaping with backslashes
+
+Any ASCII punctuation character may be escaped using a single backslash.
+
+Example:
+
+```
+\*this is not italic*
+```
+
+Renders to:
+
+\*this is not italic*
+
+
+# Non-standard features
+
+The following markdown features are not defined by the [CommonMark][] specification, but they are commonly supported by markdown parsers and editors, as well as sites like GitHub and GitLab.
+
+## Strikethrough
+
+In GFM you can do strickthroughs.
+
+```
+~~Strike through this text.~~
+```
+Which renders to:
+
+~~Strike through this text.~~
+
+<br>
+<br>
+
+### Todo List
+
+```
+- [ ] Lorem ipsum dolor sit amet
+- [ ] Consectetur adipiscing elit
+- [ ] Integer molestie lorem at massa
+```
+
+Renders to:
+
+- [ ] Lorem ipsum dolor sit amet
+- [ ] Consectetur adipiscing elit
+- [ ] Integer molestie lorem at massa
+
+**Links in todo lists**
+
+```
+- [ ] [foo](#bar)
+- [ ] [baz](#qux)
+- [ ] [fez](#faz)
+```
+
+Renders to:
+
+- [ ] [foo](#bar)
+- [ ] [baz](#qux)
+- [ ] [fez](#faz)
+
+<br>
+<br>
 
 ## Tables
-Tables are created by adding pipes as dividers between each cell, and by adding a line of dashes (also separated by bars) beneath the header. Note that the pipes do not need to be vertically aligned.
 
+Tables are created by adding pipes as dividers between each cell, and by adding a line of dashes (also separated by bars) beneath the header _(this line of dashes is required)_. 
 
-``` markdown
+- pipes do not need to be vertically aligned.
+- pipes on the left and right sides of the table are sometimes optional
+- three or more dashes must be used for each cell in the separator row
+
+Example:
+
+```
 | Option | Description |
 | ------ | ----------- |
 | data   | path to data files to supply the data that will be passed into templates. |
@@ -480,7 +712,7 @@ Renders to:
 
 And this HTML:
 
-``` html
+```html
 <table>
   <tr>
     <th>Option</th>
@@ -501,11 +733,32 @@ And this HTML:
 </table>
 ```
 
-### Right aligned text
+### Aligning cells
 
-Adding a colon on the right side of the dashes below any heading will right align text for that column.
+**Center text in a column**
 
-``` markdown
+To center the text in a column, add a colon to the middle of the dashes in the row beneath the header.
+
+```
+| Option | Description |
+| -:- | -:- |
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
+```
+
+| Option | Description |
+| -:- | -:- |
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
+
+
+**Right-align the text in a column**
+
+To right-align the text in a column, add a colon to the middle of the dashes in the row beneath the header.
+
+```
 | Option | Description |
 | ------:| -----------:|
 | data   | path to data files to supply the data that will be passed into templates. |
@@ -513,108 +766,63 @@ Adding a colon on the right side of the dashes below any heading will right alig
 | ext    | extension to be used for dest files. |
 ```
 
+Renders to:
+
 | Option | Description |
 | ------:| -----------:|
 | data   | path to data files to supply the data that will be passed into templates. |
 | engine | engine to be used for processing templates. Handlebars is the default. |
 | ext    | extension to be used for dest files. |
 
-
-<br>
-<br>
-<br>
-
-
-## Links
-
-### Basic link
-
-``` markdown
-[Assemble](http://assemble.io)
-```
-
-Renders to (hover over the link, there is no tooltip):
-
-[Assemble](http://assemble.io)
-
-HTML:
-
-``` html
-<a href="http://assemble.io">Assemble</a>
-```
-
-
-### Add a title
-
-``` markdown
-[Upstage](https://github.com/upstage/ "Visit Upstage!")
-```
-
-Renders to (hover over the link, there should be a tooltip):
-
-[Upstage](https://github.com/upstage/ "Visit Upstage!")
-
-HTML:
-
-``` html
-<a href="https://github.com/upstage/" title="Visit Upstage!">Upstage</a>
-```
-
-### Named Anchors
-
-Named anchors enable you to jump to the specified anchor point on the same page. For example, each of these chapters:
-
-```markdown
-# Table of Contents
-  * [Chapter 1](#chapter-1)
-  * [Chapter 2](#chapter-2)
-  * [Chapter 3](#chapter-3)
-```
-will jump to these sections:
-
-```markdown
-## Chapter 1 <a id="chapter-1"></a>
-Content for chapter one.
-
-## Chapter 2 <a id="chapter-2"></a>
-Content for chapter one.
-
-## Chapter 3 <a id="chapter-3"></a>
-Content for chapter one.
-```
-**NOTE** that specific placement of the anchor tag seems to be arbitrary. They are placed inline here since it seems to be unobtrusive, and it works.
-
-
-<br>
 <br>
 <br>
 
+## Footnotes
 
-## Images
-Images have a similar syntax to links but include a preceding exclamation point.
+> Markdown footnotes are not officially defined by the [CommonMark][] specification. However, the feature is supported by [remarkable][] and other markdown parsers, and it's very useful when available. 
 
-``` markdown
-![Minion](http://octodex.github.com/images/minion.png)
+Markdown footnotes are denoted by an opening square bracket, followed by a caret, followed by a number and a closing square bracket: `[^1]`. 
+
 ```
-![Minion](http://octodex.github.com/images/minion.png)
-
-or
-``` markdown
-![Alt text](http://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
+This is some text[^1] with a footnote reference link.
 ```
-![Alt text](http://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
 
-Like links, Images also have a footnote style syntax
+The accompanying text for the footnote can be added elsewhere in the document using the following syntax: 
 
-``` markdown
-![Alt text][id]
 ```
-![Alt text][id]
+[^1]: "This is a footnote"
+```
 
-With a reference later in the document defining the URL location:
+When rendered to HTML, footnotes are "stacked" by the markdown parser at the bottom of the file, in the order in which the footnotes were defined.
 
-[id]: http://octodex.github.com/images/dojocat.jpg  "The Dojocat"
+### Inline footnotes
+
+Some [markdown parsers][remarkable] also support inline footnotes. Inline footnotes are written using the following syntax: `[^2 "This is an inline footnote"]`.
+
+<br>
+<br>
+
+## Additional Information
+
+### What is markdown?
+
+> Markdown is "a plain text format for writing structured documents, based on formatting conventions from email and usenet" -- [CommonMark][]
+
+Sites like GitHub and Stackoverflow have popularized the use markdown as a plain-text alternative to traditional text editors, for writing things like documentation and comments. 
+
+### Other Resources
+
+- [We've been trained to make paper](https://ben.balter.com/2012/10/19/we-ve-been-trained-to-make-paper/) - A great blog post about why markdown frees us from the shackles of proprietary formats imposed by bloated word processors, such as Microsoft Word.
+- [CommonMark](https://commonmark.org/) - "A strongly defined, highly compatible specification of Markdown"
+
+### Contributing
+
+All contributions are welcome!
+
+Please let me know if you find typos, grammar or spelling mistakes, or have a suggestion for improving the cheatsheet (since GitHub does not send notifications for gists, it might be better to contact me on twitter, at [@jonschlinkert](https://twitter.com/jonschlinkert)).
+
+Thanks for reading!
 
 
-    [id]: http://octodex.github.com/images/dojocat.jpg  "The Dojocat"
-
+[remarkable]: https://github.com/jonschlinkert/remarkable
+[commonmark]: https://commonmark.org/

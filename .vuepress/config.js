@@ -13,6 +13,9 @@ module.exports = {
     ['meta', { name: 'msapplication-TileColor', content: '#000000' }]
   ],
   serviceWorker: true,
+  markdown: {
+    lineNumbers: true
+  },
   themeConfig: {
     // search: false,
     logo: '/icons/apple-touch-icon-152x152.png',
@@ -30,7 +33,11 @@ module.exports = {
         link: '/guide/',
       },
       {
-        text: 'markdown手册',
+        text: 'Vue代码规范',
+        link: '/vuejs/'
+      },
+      {
+        text: 'markdown手册编写',
         link: '/markdown/'
       },
       {
@@ -97,6 +104,19 @@ module.exports = {
             'name/classname'
           ]
         }
+      ],
+      '/vuejs/': [
+        {
+          title: '风格指南',
+          collapsable: false,
+          children: [
+            '',
+            'rule-a',
+            'rule-b',
+            'rule-c',
+            'rule-d'
+          ]
+        },
       ],
       '/markdown/': [
         {

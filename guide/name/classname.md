@@ -1,7 +1,7 @@
 # ClassName命名
 
 
-ClassName的命名应该尽量精短、明确，必须以**字母开头命名**，且**全部字母为小写**，单词之间**统一使用下划线** “_” 连接
+ClassName的命名应该尽量精短、明确，必须以**字母开头命名**，且**全部字母为小写**，单词之间**统一使用下划线** “-” 连接
 
 ## 命名原则 
 
@@ -9,23 +9,23 @@ ClassName的命名应该尽量精短、明确，必须以**字母开头命名**�
 
 ![enter image description here](http://labs.qiang.it/ppguide/img/standard_jiapu.png)
 
-祖先模块不能出现下划线，除了是全站公用模块，如 `mod_` 系列的命名：
+祖先模块不能出现下划线，除了是全站公用模块，如 `mod-` 系列的命名：
 
 **推荐：**
 
 ```html
 <div class="modulename">
-	<div class="modulename_info">
-		<div class="modulename_son"></div>
-		<div class="modulename_son"></div>
+	<div class="modulename-info">
+		<div class="modulename-son"></div>
+		<div class="modulename-son"></div>
 		...
 	</div>
 </div>
 	
 <!-- 这个是全站公用模块，祖先模块允许直接出现下划线 -->
-<div class="mod_info">
-	<div class="mod_info_son"></div>
-	<div class="mod_info_son"></div>
+<div class="mod-info">
+	<div class="mod-info-son"></div>
+	<div class="mod-info-son"></div>
 	...		
 </div>
 ```
@@ -33,9 +33,9 @@ ClassName的命名应该尽量精短、明确，必须以**字母开头命名**�
 **不推荐：**
 
 ```html
-<div class="modulename_info">
-	<div class="modulename_info_son"></div>
-	<div class="modulename_info_son"></div>
+<div class="modulename-info">
+	<div class="modulename-info-son"></div>
+	<div class="modulename-info-son"></div>
 	...		
 </div>	
 ```
@@ -44,8 +44,8 @@ ClassName的命名应该尽量精短、明确，必须以**字母开头命名**�
 
 ```html
 <div class="modulename">
-	<div class="modulename_cover"></div>
-	<div class="modulename_info"></div>
+	<div class="modulename-cover"></div>
+	<div class="modulename-info"></div>
 </div>
 ```
 		
@@ -55,18 +55,18 @@ ClassName的命名应该尽量精短、明确，必须以**字母开头命名**�
 
 ```html
 <div class="modulename">
-	<div class="modulename_cover"></div>
-	<div class="modulename_info">
-    	<div class="modulename_info_user">
-    		<div class="modulename_info_user_img">
+	<div class="modulename-cover"></div>
+	<div class="modulename-info">
+    	<div class="modulename-info-user">
+    		<div class="modulename-info-user-img">
     			<img src="" alt="">
-    			<!-- 这个时候 miui 为 modulename_info_user_img 首字母缩写-->
-    			<div class="miui_tit"></div>
-    			<div class="miui_txt"></div>
+    			<!-- 这个时候 miui 为 modulename-info-user-img 首字母缩写-->
+    			<div class="miui-tit"></div>
+    			<div class="miui-txt"></div>
     			...
     		</div>
     	</div>
-    	<div class="modulename_info_list"></div>
+    	<div class="modulename-info-list"></div>
 	</div>
 </div>
 ```
@@ -75,33 +75,33 @@ ClassName的命名应该尽量精短、明确，必须以**字母开头命名**�
 
 ```html
 <div class="modulename">
-	<div class="modulename_cover"></div>
-	<div class="modulename_info">
-    	<div class="modulename_info_user">
-    		<div class="modulename_info_user_img">
+	<div class="modulename-cover"></div>
+	<div class="modulename-info">
+    	<div class="modulename-info-user">
+    		<div class="modulename-info-user-img">
     			<img src="" alt="">
-    			<div class="modulename_info_user_img_tit"></div>
-    			<div class="modulename_info_user_img_txt"></div>
+    			<div class="modulename-info-user-img-tit"></div>
+    			<div class="modulename-info-user-img-txt"></div>
     			...
     		</div>
     	</div>
-    	<div class="modulename_info_list"></div>
+    	<div class="modulename-info-list"></div>
 	</div>
 </div>
 ```
 	
 ## 模块命名
 
-全站公共模块：以 `mod_` 开头
+全站公共模块：以 `mod-` 开头
 
 ```html
-<div class="mod_yours"></div>
+<div class="mod-yours"></div>
 ```
 
-业务公共模块：以 `业务名_mod_` 开头
+业务公共模块：以 `业务名-mod-` 开头
 
 ```html
-<div class="paipai_mod_yours"></div>
+<div class="paipai-mod-yours"></div>
 ```
 
 ## 常用命名推荐

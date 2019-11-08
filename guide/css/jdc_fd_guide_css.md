@@ -207,8 +207,8 @@ CSS样式表是一个序列通用字符集，传输和存储过程中，这些�
 
 ```
 .jdc,
-.jdc_logo,
-.jdc_hd {
+.jdc-logo,
+.jdc-hd {
 	...
 }
 .nav{
@@ -219,7 +219,7 @@ CSS样式表是一个序列通用字符集，传输和存储过程中，这些�
 *不推荐：*
 
 ```
-.jdc,jdc_logo,.jdc_hd {
+.jdc,jdc-logo,.jdc-hd {
 	...
 }.nav{
 	...
@@ -391,21 +391,21 @@ CSS3 浏览器私有前缀在前，标准前缀在后
 ```
 /* Module A
 ---------------------------------------------------------------- */
-.mod_a {}
+.mod-a {}
 
 
 /* Module B
 ---------------------------------------------------------------- */
-.mod_b {}
+.mod-b {}
 ```
 
 *不推荐：*
 
 ```
 /* Module A ---------------------------------------------------- */
-.mod_a {}
+.mod-a {}
 /* Module B ---------------------------------------------------- */
-.mod_b {}
+.mod-b {}
 ```
 
 ##### 文件信息注释
@@ -489,23 +489,23 @@ SCSS 文件内
 
 /* Module A
 ----------------------------------------------------------------*/
-.mod_a {}
+.mod-a {}
 
 /* module A logo */
-.mod_a_logo {}
+.mod-a-logo {}
 
 /* module A nav */
-.mod_a_nav {}
+.mod-a-nav {}
 
 /* Module B
 ----------------------------------------------------------------*/
-.mod_b {}
+.mod-b {}
 
 /* module B logo */
-.mod_b_logo {}
+.mod-b-logo {}
 
 /* module B nav */
-.mod_b_nav {}
+.mod-b-nav {}
 ```
 
 #### 嵌套规范
@@ -526,15 +526,15 @@ body .jdc {}
 ```
 // CSS
 .jdc {}
-.jdc_cover {}
-.jdc_info {}
-.jdc_info_name {}
+.jdc-cover {}
+.jdc-info {}
+.jdc-info-name {}
 
 // SCSS
 .jdc {
-    &_cover {}
-    &_info {
-        &_name {}
+    &-cover {}
+    &-info {
+        &-name {}
     }
 }
 ```
@@ -585,11 +585,11 @@ $color: red;
 
 ```
 // CSS
-.jdc_1 {
+.jdc-1 {
     -webkit-border-radius: 5px;
     border-radius: 5px;
 }
-.jdc_2 {
+.jdc-2 {
     -webkit-border-radius: 10px;
     border-radius: 10px;
 }
@@ -599,20 +599,20 @@ $color: red;
     -webkit-border-radius: $radius;
     border-radius: $radius;
 }
-.jdc_1 {
+.jdc-1 {
     @include radius; //参数使用默认值
 }
-.jdc_2 {
+.jdc-2 {
     @include radius(10px);
 }
 ```
 
 ```
 // CSS
-.jdc_1 {
+.jdc-1 {
     background: url(/img/icon.png) no-repeat -10px 0;
 }
-.jdc_2 {
+.jdc-2 {
     background: url(/img/icon.png) no-repeat -20px 0;
 }
 
@@ -620,10 +620,10 @@ $color: red;
 @mixin icon($x:0, $y:0) {
     background: url(/img/icon.png) no-repeat $x, $y;
 }
-.jdc_1 {
+.jdc-1 {
     @include icon(-10px, 0);
 }
-.jdc_2 {
+.jdc-2 {
     @include icon(-20px, 0);
 }
 ```	
@@ -647,36 +647,36 @@ $color: red;
 
 ```
 // CSS
-.jdc_1 {
+.jdc-1 {
     font-size: 12px;
     color: red;
 }
-.jdc_2 {
+.jdc-2 {
     font-size: 12px;
     color: red;
     font-weight: bold;
 }
 
 // SCSS
-.jdc_1 {
+.jdc-1 {
     font-size: 12px;
     color: red;
 }
-.jdc_2 {
-    @extend .jdc_1;
+.jdc-2 {
+    @extend .jdc-1;
     font-weight: bold;
 }
 
 // 或者
-%font_red {
+%font-red {
     font-size: 12px;
     color: red;
 }
-.jdc_1 {
-    @extend %font_red;
+.jdc-1 {
+    @extend %font-red;
 }
-.jdc_2 {
-    @extend %font_red;
+.jdc-2 {
+    @extend %font-red;
     font-weight: bold;
 }
 ```
@@ -685,13 +685,13 @@ $color: red;
 
 ```
 // CSS
-.jdc_1 {background-position: 0 -20px;}
-.jdc_2 {background-position: 0 -40px;}
-.jdc_3 {background-position: 0 -60px;}
+.jdc-1 {background-position: 0 -20px;}
+.jdc-2 {background-position: 0 -40px;}
+.jdc-3 {background-position: 0 -60px;}
 
 // SCSS
 @for $i from 1 through 3 {
-    .jdc_#{$i} {
+    .jdc-#{$i} {
         background-position: 0 (-20px) * $i;
     }
 }
@@ -702,36 +702,36 @@ $color: red;
 
 ```
 // CSS
-.jdc_list {
-    background-image: url(/img/jdc_list.png);
+.jdc-list {
+    background-image: url(/img/jdc-list.png);
 }
-.jdc_detail {
-    background-image: url(/img/jdc_detail.png);
+.jdc-detail {
+    background-image: url(/img/jdc-detail.png);
 }
 
 // SCSS
 @each $name in list, detail {
-    .jdc_#{$name} {
-        background-image: url(/img/jdc_#{$name}.png);
+    .jdc-#{$name} {
+        background-image: url(/img/jdc-#{$name}.png);
     }
 }
 ```
 
 ```
 // CSS
-.jdc_list {
-    background-image: url(/img/jdc_list.png);
+.jdc-list {
+    background-image: url(/img/jdc-list.png);
     background-color: red;
 }
-.jdc_detail {
-    background-image: url(/img/jdc_detail.png);
+.jdc-detail {
+    background-image: url(/img/jdc-detail.png);
     background-color: blue;
 }
 
 // SCSS
 @each $name, $color in (list, red), (detail, blue) {
-    .jdc_#{$name} {
-        background-image: url(/img/jdc_#{$name}.png);
+    .jdc-#{$name} {
+        background-image: url(/img/jdc-#{$name}.png);
         background-color: $color;
     }
 }

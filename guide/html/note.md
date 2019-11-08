@@ -70,13 +70,13 @@ HTML注释规范写法应该遵循以下标准：
 
 ```html
 <!-- S Comment Text A -->	
-<div class="mod_a">
+<div class="mod-a">
     ...
 </div>
 <!-- E Comment Text A -->
 	
 <!-- S Comment Text B -->	
-<div class="mod_b">
+<div class="mod-b">
     ...
 </div>
 <!-- E Comment Text B -->
@@ -86,12 +86,12 @@ HTML注释规范写法应该遵循以下标准：
 
 ```html
 <!-- S Comment Text A -->
-<div class="mod_a">
+<div class="mod-a">
     ...
 </div>
 <!-- E Comment Text A -->
 <!-- S Comment Text B -->	
-<div class="mod_b">
+<div class="mod-b">
     ...
 </div>
 <!-- E Comment Text B -->
@@ -116,17 +116,17 @@ HTML注释规范写法应该遵循以下标准：
 
 ```html
 <!-- S Comment Text A -->
-<div class="mod_a">
+<div class="mod-a">
 		
-    <div class="mod_b">
+    <div class="mod-b">
         ...
     </div>
-    <!-- /mod_b -->
+    <!-- /mod-b -->
     	
-    <div class="mod_c">
+    <div class="mod-c">
     	...
     </div>
-    <!-- /mod_c -->
+    <!-- /mod-c -->
 		
 </div>
 <!-- E Comment Text A -->
